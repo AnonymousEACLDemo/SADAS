@@ -1,0 +1,2 @@
+# JSONL saved from logger.py at 2022-10-18 02:18:14.966576
+{"time_seconds": 2.866789, "queue": "RESULT", "message": {"type": "asr_result", "uuid": "bd5894c2-555e-4a77-8560-be7e97f43a2a", "datetime": "2022-10-18 15:26:52.065519", "asr_text": "\u80fd\u7528\u591a\u4e45\u554a?\u6211\u752815\u5206\u949f\u54e6\u5e72\u4ec0\u4e48\u5462?\u6211\u65e9\u4e0a\u624d\u6253\u7535\u8bdd"}}

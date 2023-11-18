@@ -1,0 +1,44 @@
+# This is a sample container for a Python CCU analytic.
+
+# Using a *-slim base container is important because it
+# results in much smaller containers.  I am starting off
+# with Python 3.10, but you can start with some different.
+FROM python:3.10.3
+
+# Required so that the CCU library (and any other programs) can tell if
+# they are running in a container or directly on a host.
+ENV CCU_CONTAINER=1
+
+# If you have a requirements.txt file to install python libraries, then
+# you should use this code to install those libraries on the docker
+# image.  If not, then you can erase these lines, but you should still do
+# a "RUN pip install --upgrade pip" just to make sure you have the most
+# recent in the image.
+COPY requirements-ASR.txt /tmp/requirements.txt
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r /tmp/requirements.txt && \
+    rm /tmp/requirements.txt
+
+RUN mkdir /app
+WORKDIR /app
+
+# This installs the CCU Python library.
+COPY dist/ccu-0.8-py3-none-any.whl ccu-0.8-py3-none-any.whl
+RUN pip install ccu-0.8-py3-none-any.whl
+RUN pip install git+https://github.com/openai/whisper.git
+RUN apt-get update && apt-get install -y ffmpeg
+# RUN pip install ffmpeg-python
+RUN pip install setuptools-rust
+
+# Whatever commands  you need to install your software should go here.
+# This demo just uses the one python file, so that is all that is here,
+# but you code can be much more complex, with RUN or COPY commands.
+COPY constant.py /app
+COPY audio_proxy_combine_asr.py /app
+
+# These are the ports used by the zmq sockets.
+EXPOSE 11880-11893
+EXPOSE 12880-12893
+
+# The -u is required or it looks like the container is not working.
+CMD python -u audio_proxy_combine_asr.py

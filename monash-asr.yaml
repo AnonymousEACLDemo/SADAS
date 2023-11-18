@@ -1,0 +1,46 @@
+# Because this is an SRI example, the name starts with sri-.  If you are at PARC 
+# or LCC it would start with parc- or lcc- and so on.
+name: monash-asr
+version: 0.1
+poc:
+  email: devin.hua@monash.com
+  name: Yuncheng (Devin) Hua
+testingInstructions: |
+  Feeding monash-asr-test.jsonl into the container will cause it to automatically
+  detect the language of the speech and recognize the transcripts in the audio. 
+  The audio is converted into base64 string by using the command:
+  base64.b64encode(open(path, "rb").read()).decode('utf-8'). 
+  The base64 string will be encapsulated in the 'audio' type messge and sendt via 'AUDIO_SELF' queue. 
+  The monash-asr-testresult.jsonl contains the ASR result of feeding monash-asr-test.jsonl into it.  
+
+# List of required resources. 
+# * CPU means only uses CPU (and this is the default if nothing is specified)
+# * GPU-CPU means it will use a GPU if one is available at runtime, or CPU if not.
+# * GPU means it needs a GPU at runtime.  
+# * Internet means it accesses the internet at runtime.
+
+resources:
+  - GPU
+  - Internet
+  
+# List of behaviors.  If there are none, this section does not need to exist at all.
+# * Slow-Start means the container takes longer than 10 seconds to start up.
+# * Not-Realtime means the container takes noticably longer to run than the media it 
+#   is given.  For audio and video media. (No example is provided.)
+
+# Inputs and Outputs are lists of queues, each has a list of message types read
+# or written in that queue.  Do not further describe each message type,  as this
+# is done on the "Messages and Queue" page on Confluence.
+inputs:
+  - AUDIO_SELF (Message Queue)
+    - audio (Message Type)
+      - audio (Message Field)
+        - en
+        - zh
+outputs:
+  - RESULT (Message Queue)
+    - asr_result (Message Type) 
+      - asr_text (Message Field)
+        - en
+        - zh
+latency: add 2.5

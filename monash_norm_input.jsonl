@@ -1,0 +1,5 @@
+# JSONL saved from logger.py at 2022-10-23 21:26:40.022183
+{"time_seconds": 3.525587, "queue": "RESULT", "message": {"type": "asr_result", "uuid": "cd44f372-33dc-4e61-bf5f-68d82dcdd9a2", "datetime": "2022-10-23 10:28:46.892591", "asr_text": "\u80fd\u7528\u591a\u4e45\u554a?\u6211\u752815\u5206\u949f\u54e6\u5e72\u4ec0\u4e48\u5462?\u6211\u65e9\u4e0a\u624d\u6253\u7535\u8bdd"}}
+{"time_seconds": 5.002847, "queue": "RESULT", "message": {"type": "asr_result", "uuid": "6f92a99e-0ea7-4396-9a17-335701c46bff", "datetime": "2022-10-23 10:28:51.894302", "asr_text": "\u6211\u600e\u4e48\u611f\u89c9\u4f60\u5f88\u7d27\u5f20"}}
+{"time_seconds": 10.006935, "queue": "RESULT", "message": {"type": "asr_result", "uuid": "54642a01-ba43-422e-b518-9f3e4c3c2cf3", "datetime": "2022-10-23 10:28:56.898245", "asr_text": "\u4f60\u600e\u4e48\u4e00\u76f4\u77aa\u7740\u6211\uff0c\u4e5f\u4e0d\u8bf4\u8bdd\uff0c\u5413\u6b7b\u6211\u4e86\uff01"}}
+{"time_seconds": 15.010768, "queue": "RESULT", "message": {"type": "asr_result", "uuid": "16590c29-e2b6-4493-a891-e043f55420ec", "datetime": "2022-10-23 10:29:01.902098", "asr_text": "\u6211\u53c8\u6ca1\u76ef\u7740\u4f60\u770b\u3002"}}
